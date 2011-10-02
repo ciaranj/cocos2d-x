@@ -281,6 +281,13 @@ void CCLayer::ccTouchesCancelled(CCSet *pTouches, CCEvent *pEvent)
 		excuteScriptTouchesHandler(CCTOUCHCANCELLED, pTouches);
 	}
 }
+    
+void CCLayer::didAccelerate(CCAcceleration* pAccelerationValue) {
+    if (isScriptHandlerExist(CCDIDACCELERATE))
+    {
+		excuteScriptDidAccelerateHandler(CCDIDACCELERATE, pAccelerationValue);
+    }
+}
 
 /// ColorLayer
 

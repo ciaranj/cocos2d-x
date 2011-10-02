@@ -33,6 +33,7 @@ public:
 	// functions for excute touch event
 	virtual bool executeTouchEvent(const char *pszFuncName, cocos2d::CCTouch *pTouch);
 	virtual bool executeTouchesEvent(const char *pszFuncName, cocos2d::CCSet *pTouches);
+    virtual bool executeDidAccelerateEvent(const char *pszFuncName, cocos2d::CCAcceleration* pAccelerationValue);
 
 	// functions for CCCallFuncX
 	virtual bool executeCallFunc(const char *pszFuncName);

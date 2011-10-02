@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Cocos2d
-** Generated automatically by tolua++-1.0.92 on 09/27/11 23:04:35.
+** Generated automatically by tolua++-1.0.92 on 10/01/11 14:55:31.
 */
 
 #include "LuaCocos2d.h"
@@ -73730,6 +73730,7 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
    tolua_constant(tolua_S,"CCTOUCHMOVED",cocos2d::CCTOUCHMOVED);
    tolua_constant(tolua_S,"CCTOUCHENDED",cocos2d::CCTOUCHENDED);
    tolua_constant(tolua_S,"CCTOUCHCANCELLED",cocos2d::CCTOUCHCANCELLED);
+   tolua_constant(tolua_S,"CCDIDACCELERATE",cocos2d::CCDIDACCELERATE);
    tolua_constant(tolua_S,"ccTouchMax",cocos2d::ccTouchMax);
    #ifdef __cplusplus
    tolua_cclass(tolua_S,"CCSet","cocos2d::CCSet","cocos2d::CCObject",tolua_collect_cocos2d__CCSet);

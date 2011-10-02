@@ -37,6 +37,11 @@ bool LuaEngine::executeTouchesEvent(const char *pszFuncName, CCSet *pTouches)
 	return CCLuaScriptModule::sharedLuaScriptModule()->executeTouchesEvent(pszFuncName, pTouches);
 }
 
+bool LuaEngine::executeDidAccelerateEvent(const char *pszFuncName, cocos2d::CCAcceleration* pAccelerationValue)
+{
+    return CCLuaScriptModule::sharedLuaScriptModule()->executeDidAccelerateEvent( pszFuncName, pAccelerationValue);
+}
+
 // functions for CCCallFuncX
 bool LuaEngine::executeCallFunc(const char *pszFuncName)
 {

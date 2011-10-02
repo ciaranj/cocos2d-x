@@ -46,9 +46,14 @@ enum {
 	CCTOUCHMOVED,
 	CCTOUCHENDED,
 	CCTOUCHCANCELLED,
+    /* This shouldn't really go here, but if we restart an enum in CCAccelerometerDelegate.h, 
+       it would overlap with CCTOUCHBEGAN, and break CCTouchDelegate::isScriptHandlerExist etc. */
+    CCDIDACCELERATE, 
+
 	
 	ccTouchMax,
 };
+
 
 class CCSet;
 class CCEvent;

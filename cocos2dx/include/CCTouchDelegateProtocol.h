@@ -31,6 +31,7 @@ THE SOFTWARE.
 #include "CCObject.h"
 #include "ccConfig.h"
 #include "CCScriptSupport.h"
+#include "CCAccelerometerDelegate.h"
 
 namespace   cocos2d {
 
@@ -120,6 +121,17 @@ public:
 				                                                                                        pTouches);
 		}
 	}
+    
+    inline void excuteScriptDidAccelerateHandler(int eventType, CCAcceleration* pAccelerationValue)
+    {
+		if (m_pEventTypeFuncMap && CCScriptEngineManager::sharedScriptEngineManager()->getScriptEngine())
+		{
+			CCScriptEngineManager::sharedScriptEngineManager()->getScriptEngine()->executeDidAccelerateEvent((*m_pEventTypeFuncMap)[eventType].c_str(),
+                                                                                                       pAccelerationValue);
+		}
+        
+    }
+
 };
 /**
  @brief

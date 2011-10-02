@@ -620,6 +620,43 @@ bool CCLuaScriptModule::executeListItem(const std::string& handler_name, int ind
 	return true;
 }
 
+bool CCLuaScriptModule::executeDidAccelerateEvent(const std::string& handler_name, CCAcceleration* pAccelerationValue)
+{
+    if (handler_name.size() == 0)
+    {
+        std::string msg = "(LuaScriptModule) Unable to execute scripted event handler: handler_name == null\n";
+        CCLog("%s %d", msg.c_str(), __LINE__);
+        return false;
+    }
+    // get the function from lua
+    lua_getglobal(d_state, handler_name.c_str());
+    
+    // is it a function
+    if ( !lua_isfunction(d_state,-1) )
+    {
+        lua_settop( d_state, 0 );
+        std::string msg = handler_name+"\n"+" does not represent a Lua function"+"\n";
+        CCLog("%s %d", msg.c_str(), __LINE__);
+        return false;
+    }
+    // push EventArgs as the first parameter
+    tolua_pushusertype(d_state,(void*)pAccelerationValue,"cocos2d::CCAcceleration");
+    // call it
+    int error = lua_pcall(d_state,1,0,0);
+    // handle errors
+    if ( error )
+    {
+        std::string msg = lua_tostring(d_state,-1);
+        lua_pop(d_state,1);
+        std::string msgerror = handler_name + "\n" + msg + "\n";
+        CCLog("%s %s %d", __FILE__, msgerror.c_str(), __LINE__);
+        return false;
+    }
+    // return it
+    return true;
+
+}
+
 /*************************************************************************
 	Execute script code string
 *************************************************************************/

@@ -33,6 +33,7 @@ THE SOFTWARE.
 #include "CCTouch.h"
 #include "CCSet.h"
 #include "CCNode.h"
+#include "CCAccelerometer.h"
 
 /*
  * Only one script is support at a time.
@@ -49,6 +50,7 @@ public:
 	// functions for excute touch event
 	virtual bool executeTouchEvent(const char *pszFuncName, CCTouch *pTouch) = 0;
 	virtual bool executeTouchesEvent(const char *pszFuncName, CCSet *pTouches) = 0;
+    virtual bool executeDidAccelerateEvent(const char *pszFuncName, CCAcceleration* pAccelerationValue) = 0;
 
 	// functions for CCCallFuncX
 	virtual bool executeCallFunc(const char *pszFuncName) = 0;

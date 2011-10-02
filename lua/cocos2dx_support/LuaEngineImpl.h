@@ -115,6 +115,7 @@ public:
 	bool executeEventHandler(const std::string& handler_name, cocos2d::CCEvent* pEvent);
 	bool executeTouchesEvent(const std::string& handler_name, cocos2d::CCSet *pobj);
 	bool executeTouch(const std::string& handler_name, cocos2d::CCTouch *pobj);
+    bool executeDidAccelerateEvent(const std::string& handler_name, cocos2d::CCAcceleration* pAccelerationValue);
 	bool executeListItem(const std::string& handler_name, int index, cocos2d::CCObject* pobj);
 	
     /**
