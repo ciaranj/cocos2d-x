@@ -39,16 +39,17 @@ namespace cocos2d{
 		bool initWithLabel(CCNode* label, SelectorProtocol* target, SEL_MenuHandler selector);
 
 		void setString(const char * label);
-
-		virtual void activate();
-		virtual void selected();
-		virtual void unselected();		
 		virtual void setIsEnabled(bool enabled);
 		virtual void setOpacity(GLubyte opacity);
 		virtual GLubyte getOpacity();
 		virtual void setColor(ccColor3B color);
 		virtual ccColor3B getColor();
 		virtual CCRGBAProtocol* convertToRGBAProtocol();
+
+	 private:
+		virtual void activate();
+		virtual void selected();
+		virtual void unselected();		
 
 	};
 
@@ -57,6 +58,7 @@ namespace cocos2d{
 	*/
 	class  CCMenuItemAtlasFont : public CCMenuItemLabel
 	{
+	public:
 
 		CCMenuItemAtlasFont();		
 		static CCMenuItemAtlasFont* itemFromString(const char *value, const char *charMapFile, int itemWidth, int itemHeight, char startCharMap);
@@ -68,6 +70,7 @@ namespace cocos2d{
 
 	class  CCMenuItemFont : public CCMenuItemLabel
 	{
+	public:
 
 		CCMenuItemFont();
 
@@ -88,6 +91,7 @@ namespace cocos2d{
 
 	class  CCMenuItemSprite : public CCMenuItem, public CCRGBAProtocol
 	{
+	public:
 		CCMenuItemSprite();		
 		static CCMenuItemSprite * itemFromNormalSprite(CCNode* normalSprite, CCNode* selectedSprite);		
 		static CCMenuItemSprite * itemFromNormalSprite(CCNode* normalSprite, CCNode* selectedSprite, SelectorProtocol* target, SEL_MenuHandler selector);		
@@ -106,6 +110,7 @@ namespace cocos2d{
 
 	class  CCMenuItemImage : public CCMenuItemSprite
 	{
+	public:
 
 		CCMenuItemImage();	
 		static CCMenuItemImage* itemFromNormalImage(const char *normalImage, const char *selectedImage);		
@@ -122,6 +127,7 @@ namespace cocos2d{
 
 	class  CCMenuItemToggle : public CCMenuItem, public CCRGBAProtocol
 	{
+	public:
 
 		CCMenuItemToggle();
 		

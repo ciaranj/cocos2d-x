@@ -32,6 +32,7 @@ class CCTimer : public CCObject
 
 class CCScheduler : public CCObject
 {
+public:
     ~CCScheduler(void);
 	
 	ccTime getTimeScale(void);

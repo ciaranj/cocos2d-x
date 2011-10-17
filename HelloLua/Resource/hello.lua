@@ -1,10 +1,11 @@
 require "hello2"
+require "FarmLayer"
 
 cocos2d.CCLuaLog("result is " .. myadd(3, 5))
 
 -- create scene & layer
-layerFarm = cocos2d.CCLayer:node()
-layerFarm:setIsTouchEnabled(true)
+layerFarm = FarmLayer:new() 
+
 
 layerMenu = cocos2d.CCLayer:node()
 

@@ -5,6 +5,7 @@
 namespace cocos2d{
 	class  CCLabelTTF : public CCSprite, public CCLabelProtocol
 	{
+		public:
 		CCLabelTTF();
 		~CCLabelTTF();
 		char * description();

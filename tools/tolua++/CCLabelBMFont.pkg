@@ -38,6 +38,7 @@ namespace cocos2d{
 
 	class CCBMFontConfiguration : public CCObject
 	{	
+	public:
 		CCBMFontConfiguration();	
 		char * description();
 		static CCBMFontConfiguration * configurationWithFNTFile(const char *FNTfile);		
@@ -47,7 +48,7 @@ namespace cocos2d{
 
 	class CCLabelBMFont : public CCSpriteBatchNode, public CCLabelProtocol, public CCRGBAProtocol
 	{
-
+		public:
 		CCLabelBMFont();	
 		static void purgeCachedData();		
 		static CCLabelBMFont * labelWithString(const char *str, const char *fntFile);       

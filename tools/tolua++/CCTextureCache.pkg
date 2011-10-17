@@ -2,7 +2,7 @@ namespace   cocos2d {
 
 class CCTextureCache : public CCObject
 {
-
+ public:
 	CCTextureCache();
 	~CCTextureCache();
 

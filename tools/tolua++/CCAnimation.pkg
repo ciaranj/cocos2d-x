@@ -13,7 +13,7 @@ namespace   cocos2d {
 	class  CCAnimation : public CCObject
 	{
 	
-	
+	 public:
 		 const char* getName(void);
 		 void setName(const char *pszName);
 		 float getDelay(void);
@@ -33,7 +33,6 @@ namespace   cocos2d {
 
 		bool init(void);
 
-	public:
 	
         static CCAnimation* animation(void);
 

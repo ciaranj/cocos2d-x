@@ -17,7 +17,7 @@ namespace cocos2d
 	*/
 	class  CCAnimationCache : public CCObject
 	{
-
+		public:
 		CCAnimationCache();		
 		static CCAnimationCache* sharedAnimationCache(void);		
 		static void purgeSharedAnimationCache(void);

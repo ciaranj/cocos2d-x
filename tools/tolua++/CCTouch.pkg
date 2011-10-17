@@ -2,7 +2,7 @@ namespace cocos2d {
 
 class CCTouch : public CCObject
 {
-
+	public:
     CCTouch();
     CCTouch(int nViewId, float x, float y);
 

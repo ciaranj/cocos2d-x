@@ -5,6 +5,7 @@ enum {
 
 class CCNode : public CCObject, public SelectorProtocol
 {
+public: 
         CCNode();
 	int	getZOrder();
 	float	getVertexZ();

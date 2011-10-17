@@ -67,9 +67,7 @@ namespace   cocos2d {
 
 	class  CCDirector : public CCObject
 	{
-	public: 
 		bool init(void);	
-		CCDirector(void);
 
 
 		CCScene* getRunningScene(void);
@@ -112,8 +110,6 @@ namespace   cocos2d {
 		/** enables/disables OpenGL depth test */
 		void setDepthTest(bool bOn);
 
-		virtual void mainLoop(void) = 0;
-
 		// Profiler
 		void showProfilers(void);
 
@@ -132,6 +128,9 @@ namespace   cocos2d {
 		static bool setDirectorType(ccDirectorType obDirectorType);
 
 		static CCDirector* sharedDirector(void);
+		private:
+		CCDirector(void);
+		
 	};
 
 /*

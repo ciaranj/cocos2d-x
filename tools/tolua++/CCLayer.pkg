@@ -1,6 +1,5 @@
 #include "CCNode.h"
 #include "CCProtocols.h"
-#include "CCTouchDelegateProtocol.h"
 #include "CCAccelerometerDelegate.h"
 #include "CCKeypadDelegate.h"
 
@@ -8,14 +7,14 @@ namespace   cocos2d {
 
 	class CCLayer : public CCNode, public CCTouchDelegate, public CCAccelerometerDelegate, public CCKeypadDelegate
 	{
+	#define LAYER_NODE_FUNC 1
+	CCLayer();	
 	public:
-		CCLayer();	
-		bool init();
+		virtual bool init();
 		static CCLayer *node(void);
-		void onEnter();
-		void onExit();
-		void onEnterTransitionDidFinish();
-		bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+		virtual void onEnter();
+		virtual void onExit();
+		virtual void onEnterTransitionDidFinish();
 		void destroy(void);
 		void keep(void);
 
@@ -33,18 +32,11 @@ namespace   cocos2d {
 
 		void setIsKeypadEnabled(bool bValue);
 		bool getIsKeypadEnabled();
-		
-		void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
-	        void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
-	        void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
-	        void ccTouchesCancelled(CCSet *pTouches, CCEvent *pEvent);
 	};
 
 	class  CCLayerColor : public CCLayer , public CCRGBAProtocol, public CCBlendProtocol
 	{
-
-
-
+	public:
 		CCLayerColor();
 		void draw();
 		void setContentSize(CCSize var);
@@ -74,8 +66,7 @@ namespace   cocos2d {
 
 	class  CCLayerGradient : public CCLayerColor
 	{
-
-
+	public:
 		static CCLayerGradient* layerWithColor(ccColor4B start, ccColor4B end);
 
 		/** Creates a full-screen CCLayer with a gradient between start and end in the direction of v. */
@@ -110,6 +101,7 @@ namespace   cocos2d {
 
 	class  CCLayerMultiplex : public CCLayer
 	{
+	public:
 		CCLayerMultiplex();		
 		//static CCLayerMultiplex * layerWithLayers(CCLayer* layer, ... );
 		//lua instead with follow func

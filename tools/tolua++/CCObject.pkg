@@ -8,7 +8,7 @@ class  CCCopying
 
 class  CCObject : public CCCopying
 {
-
+	public:
 	CCObject(void);
 	~CCObject(void);
     

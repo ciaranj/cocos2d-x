@@ -9,14 +9,14 @@ namespace cocos2d {
 
 	class  CCActionInterval : public CCFiniteTimeAction
 	{
-
+		public:
 		ccTime getElapsed(void);
 		bool initWithDuration(ccTime d);
 		bool isDone(void);
 		CCObject* copyWithZone(CCZone* pZone);
 		void step(ccTime dt);
 		void startWithTarget(CCNode *pTarget);	
-		CCActionInterval* reverse(void);
+		virtual CCActionInterval* reverse(void);
 		static CCActionInterval* actionWithDuration(ccTime d);
 		void setAmplitudeRate(CGFloat amp);
 		CGFloat getAmplitudeRate(void);
@@ -24,14 +24,13 @@ namespace cocos2d {
 
 	class  CCSequence : public CCActionInterval
 	{
-
-
+	public:
 		bool initOneTwo(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
 		void stop(void);
 		void update(ccTime time);
-		CCActionInterval* reverse(void);
+		virtual CCActionInterval* reverse(void);
 		//	static CCFiniteTimeAction* actions(CCFiniteTimeAction *pAction1, ...);
 		//用以下方法替代
 		static CCSequence* actionOneTwo(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
@@ -42,9 +41,7 @@ namespace cocos2d {
 
 	class  CCRepeat : public CCActionInterval
 	{
-
-
-
+	public:
 		bool initWithAction(CCFiniteTimeAction *pAction, unsigned int times);
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
@@ -63,7 +60,7 @@ namespace cocos2d {
 
 	class  CCRepeatForever : public CCActionInterval
 	{
-
+	public:
 		CCRepeatForever();
 
 		bool initWithAction(CCActionInterval *pAction);
@@ -71,7 +68,7 @@ namespace cocos2d {
 		void startWithTarget(CCNode* pTarget);
 		void step(ccTime dt);
 		bool isDone(void);
-		CCActionInterval* reverse(void);
+		virtual CCActionInterval* reverse(void);
 		
 		void setInnerAction(CCActionInterval *pAction);
 		CCActionInterval* getInnerAction();
@@ -83,7 +80,9 @@ namespace cocos2d {
 	/** @brief Spawn a new action immediately
 	*/
 	class  CCSpawn : public CCActionInterval
-	{	
+	{
+	public:
+		
 		bool initOneTwo(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
@@ -101,6 +100,7 @@ namespace cocos2d {
 
 	class  CCRotateTo : public CCActionInterval
 	{
+	public:
 
 		bool initWithDuration(ccTime duration, float fDeltaAngle);
 		CCObject* copyWithZone(CCZone* pZone);
@@ -113,12 +113,12 @@ namespace cocos2d {
 	*/
 	class CCRotateBy : public CCActionInterval
 	{
-
+	public:
 		bool initWithDuration(ccTime duration, float fDeltaAngle);
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
 		void update(ccTime time);
-		CCActionInterval* reverse(void);
+		virtual CCActionInterval* reverse(void);
 		static CCRotateBy* actionWithDuration(ccTime duration, float fDeltaAngle);
 
 	};
@@ -127,7 +127,7 @@ namespace cocos2d {
 	*/
 	class  CCMoveTo : public CCActionInterval
 	{
-
+	public:
 		bool initWithDuration(ccTime duration, CCPoint position);
 
 		CCObject* copyWithZone(CCZone* pZone);
@@ -141,17 +141,19 @@ namespace cocos2d {
 
 	class  CCMoveBy : public CCMoveTo
 	{
-
+	public:
 		bool initWithDuration(ccTime duration, CCPoint position);
 
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
-		CCActionInterval* reverse(void);
+		virtual CCActionInterval* reverse(void);
 		static CCMoveBy* actionWithDuration(ccTime duration, CCPoint position);
 	};
 	
 	class CCSkewTo : public CCActionInterval
 	{
+	public:
+	
 		CCSkewTo();
 		virtual bool initWithDuration(ccTime t, float sx, float sy);
 		virtual CCObject* copyWithZone(CCZone* pZone);
@@ -162,6 +164,7 @@ namespace cocos2d {
 	
 	class CCSkewBy : public CCSkewTo
 	{
+	public:
 		virtual bool initWithDuration(ccTime t, float sx, float sy);
 		virtual void startWithTarget(CCNode *pTarget);
 		virtual CCActionInterval* reverse(void);
@@ -170,12 +173,12 @@ namespace cocos2d {
 
 	class  CCJumpBy : public CCActionInterval
 	{
-
+	public:
 		bool initWithDuration(ccTime duration, CCPoint position, ccTime height, int jumps);
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
 		void update(ccTime time);
-		CCActionInterval* reverse(void);
+		virtual CCActionInterval* reverse(void);
 		static CCJumpBy* actionWithDuration(ccTime duration, CCPoint position, ccTime height, int jumps);
 	};
 
@@ -200,7 +203,7 @@ namespace cocos2d {
 
 	class  CCBezierBy : public CCActionInterval
 	{
-
+	public:
 		bool initWithDuration(ccTime t, ccBezierConfig c);
 		virtual CCObject* copyWithZone(CCZone* pZone);
 		virtual void startWithTarget(CCNode *pTarget);
@@ -224,7 +227,7 @@ namespace cocos2d {
 
 	class  CCScaleTo : public CCActionInterval
 	{
-
+	public:
 		bool initWithDuration(ccTime duration, float s);	
 		bool initWithDuration(ccTime duration, float sx, float sy);
 
@@ -238,7 +241,7 @@ namespace cocos2d {
 
 	class  CCScaleBy : public CCScaleTo
 	{
-
+	public:
 		virtual void startWithTarget(CCNode *pTarget);
 		virtual CCActionInterval* reverse(void);
 		virtual CCObject* copyWithZone(CCZone* pZone);
@@ -250,7 +253,7 @@ namespace cocos2d {
 
 	class  CCBlink : public CCActionInterval
 	{
-
+	public:
 		bool initWithDuration(ccTime duration, unsigned int uBlinks);
 
 		virtual CCObject* copyWithZone(CCZone* pZone);
@@ -262,7 +265,7 @@ namespace cocos2d {
 
 	class  CCFadeIn : public CCActionInterval
 	{
-
+	public:
 		virtual void update(ccTime time);
 		virtual CCActionInterval* reverse(void);
 		virtual CCObject* copyWithZone(CCZone* pZone);
@@ -271,7 +274,7 @@ namespace cocos2d {
 
 	class  CCFadeOut : public CCActionInterval
 	{
-
+	public:
 		virtual void update(ccTime time);
 		virtual CCActionInterval* reverse(void);
 		virtual CCObject* copyWithZone(CCZone* pZone);
@@ -281,7 +284,7 @@ namespace cocos2d {
 
 	class  CCFadeTo : public CCActionInterval
 	{
-
+	public:
 		bool initWithDuration(ccTime duration, GLubyte opacity);
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
@@ -292,6 +295,7 @@ namespace cocos2d {
 
 	class  CCTintTo : public CCActionInterval
 	{
+	public:
 		bool initWithDuration(ccTime duration, GLubyte red, GLubyte green, GLubyte blue);
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
@@ -301,13 +305,13 @@ namespace cocos2d {
 
 	class  CCTintBy : public CCActionInterval
 	{
-
+	public:
 		bool initWithDuration(ccTime duration, GLshort deltaRed, GLshort deltaGreen, GLshort deltaBlue);
 
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
 		void update(ccTime time);
-		CCActionInterval* reverse(void);
+		virtual CCActionInterval* reverse(void);
 
 		static CCTintBy* actionWithDuration(ccTime duration, GLshort deltaRed, GLshort deltaGreen, GLshort deltaBlue);
 
@@ -317,7 +321,7 @@ namespace cocos2d {
 	*/
 	class  CCDelayTime : public CCActionInterval
 	{
-
+	public:
 		void update(ccTime time);
 		CCActionInterval* reverse(void);
 		CCObject* copyWithZone(CCZone* pZone);
@@ -327,15 +331,13 @@ namespace cocos2d {
 
 	class  CCReverseTime : public CCActionInterval
 	{
-
-
-
+	public:
 		bool initWithAction(CCFiniteTimeAction *pAction);
 		CCObject* copyWithZone(CCZone* pZone);
 		void startWithTarget(CCNode *pTarget);
 		void stop(void);
 		void update(ccTime time);
-		CCActionInterval* reverse(void);
+		virtual CCActionInterval* reverse(void);
 
 		static CCReverseTime* actionWithAction(CCFiniteTimeAction *pAction);
 
@@ -345,9 +347,7 @@ namespace cocos2d {
 
 	class  CCAnimate : public CCActionInterval
 	{
-
-
-
+	public:
 		CCAnimation* getAnimation(void);
 		void setAnimation(CCAnimation *pAnimation);
 		bool initWithAnimation(CCAnimation *pAnimation);	
@@ -360,7 +360,7 @@ namespace cocos2d {
 		void startWithTarget(CCNode *pTarget);
 		void stop(void);
 		void update(ccTime time);
-		CCActionInterval* reverse(void);
+		virtual CCActionInterval* reverse(void);
 
 
 		static CCAnimate* actionWithAnimation(CCAnimation *pAnimation);

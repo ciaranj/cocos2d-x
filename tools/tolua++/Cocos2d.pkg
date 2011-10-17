@@ -1,4 +1,6 @@
+$#include "tolua_base.h"
 $#include "LuaCocos2d.h"
+
 $pfile "CCNode.pkg"
 
 $pfile "CCObject.pkg"

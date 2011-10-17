@@ -7,7 +7,8 @@
   <target name="cocos2d-x-bindings">
     <echo message="Calling tolua++" />
     <exec executable="${tolua++}">
-      <arg value="-tCocos2d"/>
+      <arg value="-L"/>
+      <arg value="virtual_method_hooks.lua" />
       <arg value="-o"/>
       <arg value="LuaCocos2d.cpp"/>
       <arg value="Cocos2d.pkg"/>
@@ -35,6 +36,7 @@
       <replacetoken><![CDATA[/* Exported function */
 TOLUA_API int  tolua_Cocos2d_open (lua_State* tolua_S);
 
+#include "tolua_base.h"
 #include "LuaCocos2d.h"
 
 /* function to release collected object via destructor */]]></replacetoken>
@@ -53,12 +55,39 @@ TOLUA_API int  tolua_Cocos2d_open (lua_State* tolua_S);
 #endif]]></replacetoken>
       <replacevalue><![CDATA[*/
 
+#include "tolua_base.h"
 #include "LuaCocos2d.h"
 
 #ifndef __cplusplus
 #include "stdlib.h"
 #endif]]></replacevalue>
     </replace>
+
+    <!-- Patches required to support the virtual method overriding --> 
+    <replaceregexp file="LuaCocos2d.cpp" match="cocos2d::(\w+__\w+)" replace="\1" flags="g"/>
+    <replace file="LuaCocos2d.cpp">
+
+    <replacetoken><![CDATA[cocos2d::ccColor3B  getColor( void ) {
+		if (push_method("getColor",  tolua_Cocos2d_cocos2d_CCMenuItemLabel_getColor00)) {
+			ToluaBase::dbcall(lua_state, 1, 1);
+			 cocos2d::ccColor3B  tolua_ret = ( cocos2d::ccColor3B )*(cocos2d::ccColor3B*)tolua_tousertype(lua_state, -1, 0);
+			lua_pop(lua_state, 1);
+			return tolua_ret;
+		} else {
+			return ( cocos2d::ccColor3B ) cocos2d::CCMenuItemLabel:: getColor();
+		};
+	};]]></replacetoken>
+    <replacevalue><![CDATA[const cocos2d::ccColor3B&  getColor( void ) {
+		if (push_method("getColor",  tolua_Cocos2d_cocos2d_CCMenuItemLabel_getColor00)) {
+			ToluaBase::dbcall(lua_state, 1, 1);
+			 cocos2d::ccColor3B  tolua_ret = ( cocos2d::ccColor3B )*(cocos2d::ccColor3B*)tolua_tousertype(lua_state, -1, 0);
+			lua_pop(lua_state, 1);
+			return tolua_ret;
+		} else {
+			return ( cocos2d::ccColor3B ) cocos2d::CCMenuItemLabel:: getColor();
+		};
+	};]]></replacevalue>
+    </replace>    
     <echo message="Copying new bindings to target location" />
     <move file="LuaCocos2d.cpp" todir="../../lua/cocos2dx_support/"/>
   </target>

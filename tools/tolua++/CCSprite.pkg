@@ -20,7 +20,8 @@ typedef enum {
 
 class  CCSprite : public CCNode, public CCTextureProtocol, public CCRGBAProtocol
 {
-
+#define LAYER_NODE_FUNC 1
+public:
 	void draw(void);
 
 	bool isDirty(void);
@@ -79,7 +80,7 @@ class  CCSprite : public CCNode, public CCTextureProtocol, public CCRGBAProtocol
 	static CCSprite* spriteWithBatchNode(CCSpriteBatchNode *batchNode, CCRect rect);
 
 
-	bool init(void);
+	virtual bool init(void);
 	~CCSprite(void);
 	CCSprite();
 

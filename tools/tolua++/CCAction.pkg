@@ -14,12 +14,12 @@ namespace   cocos2d {
 	
 			CCAction(void);			
 			char * description();
-			CCObject* copyWithZone(CCZone *pZone);			
-			bool isDone(void);
-			void startWithTarget(CCNode *pTarget); 
-			void stop(void);
-			void step(ccTime dt);
-			void update(ccTime time);
+			virtual CCObject* copyWithZone(CCZone *pZone);			
+			virtual bool isDone(void);
+			virtual void startWithTarget(CCNode *pTarget); 
+			virtual void stop(void);
+			virtual void step(ccTime dt);
+			virtual void update(ccTime time);
 			CCNode* getTarget(void);
 			void setTarget(CCNode *pTarget);
 			CCNode* getOriginalTarget(void);
@@ -62,19 +62,19 @@ namespace   cocos2d {
 			/** initializes the action */
 			bool initWithAction(CCActionInterval *pAction, float fRate);
 
-			CCObject* copyWithZone(CCZone *pZone);
-			void startWithTarget(CCNode* pTarget);
-			void stop();
-			void step(ccTime dt);
-			bool isDone(void);
 			CCActionInterval* reverse(void);
 			
 			void setInnerAction(CCActionInterval *pAction);
 			CCActionInterval* getInnerAction();
 
-			static CCSpeed* actionWithAction(CCActionInterval *pAction, float fRate);	 
-
-	
+			static CCSpeed* actionWithAction(CCActionInterval *pAction, float fRate);
+		private:
+			virtual CCObject* copyWithZone(CCZone *pZone);			
+			virtual bool isDone(void);
+			virtual void startWithTarget(CCNode *pTarget); 
+			virtual void stop(void);
+			virtual void step(ccTime dt);
+			virtual void update(ccTime time);
 		};
 
 
@@ -87,13 +87,16 @@ namespace   cocos2d {
 			void setBoudarySet(bool bValue);			
 			bool initWithTarget(CCNode *pFollowedNode);		
 			bool initWithTarget(CCNode *pFollowedNode, CCRect rect);
-			virtual CCObject* copyWithZone(CCZone *pZone);
-			virtual void step(ccTime dt);
-			virtual bool isDone(void);
-			virtual void stop(void);
-		
 			static CCFollow* actionWithTarget(CCNode *pFollowedNode);
 			static CCFollow* actionWithTarget(CCNode *pFollowedNode, CCRect rect);	
+		private:
+			virtual CCObject* copyWithZone(CCZone *pZone);			
+			virtual bool isDone(void);
+			virtual void startWithTarget(CCNode *pTarget); 
+			virtual void stop(void);
+			virtual void step(ccTime dt);
+			virtual void update(ccTime time);   
+
 
 		};
 }//namespace   cocos2d 

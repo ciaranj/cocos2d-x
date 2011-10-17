@@ -2,7 +2,7 @@ namespace   cocos2d {
 
 class  CCSpriteFrame : public CCObject
 {
-
+	public:
 	  CCRect getRectInPixels(void);
 	  void setRectInPixels(CCRect rectInPixels);
 

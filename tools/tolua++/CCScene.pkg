@@ -9,7 +9,7 @@ typedef enum
 
 class CCScene : public CCNode
 {
-
+public:
 	CCScene();
 	virtual ~CCScene();
 	bool init();
